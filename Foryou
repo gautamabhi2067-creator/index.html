@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>A Little Question ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top left, #ffe6f2, transparent 35%),
+        radial-gradient(circle at bottom right, #e8e0ff, transparent 35%),
+        linear-gradient(135deg, #fff7fb, #f7f1ff, #fff5f8);
+}.box {
+    width: 92%;
+    max-width: 570px;
+
+    padding: 35px 22px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.82);
+
+    box-shadow:
+        0 15px 45px rgba(150,100,150,0.18);
+
+    border: 1px solid rgba(255,255,255,0.9);
+
+    z-index: 20;
+}
+
+#question {
+    font-size: 28px;
+    line-height: 1.45;
+    color: #4b3042;
+    margin-bottom: 25px;
+}
+
+button {
+    padding: 13px 23px;
+    margin: 8px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: white;
+    color: #4b3042;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 18px rgba(120,80,120,0.12);
+
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: #fff0f7;
+}
+
+.play {
+    background: linear-gradient(135deg,#ff8fbd,#ffb6d5);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 14px 35px;
+}back {
+    display: block;
+    margin: 22px auto 0;
+
+    background: #4b3042;
+    color: white;
+}
+
+.big-heart {
+    font-size: 80px;
+
+    animation: heartbeat 1.1s infinite;
+}
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.18);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.18);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.message {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #59394d;
+}
+
+.sparkle {
+    display: inline-block;
+    font-size: 27px;
+    margin: 4px;
+
+    animation: sparkle 1.3s infinite alternate;
+}
+
+@keyframes sparkle {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.agreement {
+    padding: 22px 18px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,0.85);
+
+    border: 2px solid rgba(255,170,205,0.55);
+
+    box-shadow:
+        0 10px 30px rgba(220,120,170,0.15);
+}
+
+.agreement-title {
+    font-size: 25px;
+    font-weight: bold;
+
+    color: #d14d83;
+
+    margin-bottom: 15px;
+}
+
+.agreement-text {
+    font-size: 18px;
+    line-height: 1.65;
+
+    color: #5c4050;
+}
+yes {
+    background:
+        linear-gradient(135deg,#ff8fbd,#ffb6d5);
+
+    color: white;
+    font-weight: bold;
+}
+
+.congrats {
+    font-size: 30px;
+    color: #d14d83;
+}
+
+.falling {
+    position: fixed;
+
+    top: -60px;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+    from {
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+#hateButton {
+    position: fixed;
+    z-index: 50;
+}
+
+.crack {
+    position: absolute;
+
+    color: #777;
+
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+.cracked {
+    animation: crackShake 0.3s;
+}
+
+@keyframes crackShake {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-6deg);
+    }
+
+    50% {
+        transform: rotate(6deg);
+    }
+
+    75% {
+        transform: rotate(-4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media(max-width:500px) {
+
+    #question {
+        font-size: 23px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+    <div id="question">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        A Little Question... 👀
+
+    </div>
+
+
+    <div id="options">
+
+        <button class="play"
+                id="playButton">
+
+            Play ❤️
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+/* =================================
+   VARIABLES
+================================= */
+
+var question =
+    document.getElementById("question");
+
+var options =
+    document.getElementById("options");
+
+var hateClicks = 0;
+
+var rainTimer = null;
+
+
+/* =================================
+   BASIC FUNCTIONS
+================================= */
+
+function showQuestion(text) {
+
+    question.innerHTML = text;
+
+}
+
+
+function showOptions(html) {
+
+    options.innerHTML = html;
+
+}
+
+
+/* =================================
+   STOP RAIN
+================================= */
+
+function stopRain() {
+
+    if (rainTimer !== null) {
+
+        clearInterval(rainTimer);
+
+        rainTimer = null;
+
+    }
+
+    var items =
+        document.querySelectorAll(".falling");
+
+    items.forEach(function(item) {
+
+        item.remove();
+
+    });
+
+}
+
+
+/* =================================
+   PLAY BUTTON
+================================= */
+
+document.getElementById("playButton")
+    .addEventListener("click", function() {
+
+        questionOne();
+
+    });
+
+
+
+/* =================================
+   QUESTION ONE
+================================= */
+
+function questionOne() {
+
+    stopRain();
+
+    showQuestion("Hello 👋");
+
+
+    showOptions(`
+
+        <button id="hiButton">
+            Hi
+        </button>
+
+        <button id="hajurButton">
+            Hajurrrrrrrrr
+        </button>
+
+    `);
+
+
+    document.getElementById("hiButton")
+        .addEventListener("click", function() {
+
+            wrongHello();
+
+        });
+
+
+    document.getElementById("hajurButton")
+        .addEventListener("click", function() {
+
+            questionTwo();
+
+        });
+
+}
+
+
+
+/* =================================
+   WRONG HELLO
+================================= */
+
+function wrongHello() {
+
+    stopRain();
+
+    showQuestion("No 😭 Goodbye");
+
+
+    showOptions(`
+
+        <button class="back"
+                id="backHello">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("backHello")
+        .addEventListener("click", function() {
+
+            questionOne();
+
+        });
+
+}
+/* =================================
+   QUESTION TWO
+================================= */
+
+function questionTwo() {
+
+    stopRain();
+
+    showQuestion(
+        "Do you know one thing?"
+    );
+
+
+    showOptions(`
+
+        <button id="dontKnow">
+            I don't wanna know
+        </button>
+
+        <button id="whatButton">
+            What 🤔..!
+        </button>
+
+        <br>
+
+        <button class="back"
+                id="backTwo">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("dontKnow")
+        .addEventListener("click", function() {
+
+            dontKnow();
+
+        });
+
+
+    document.getElementById("whatButton")
+        .addEventListener("click", function() {
+
+            questionThree();
+
+        });
+
+
+    document.getElementById("backTwo")
+        .addEventListener("click", function() {
+
+            questionOne();
+
+        });
+
+}
+
+
+
+/* =================================
+   DON'T KNOW
+================================= */
+
+function dontKnow() {
+
+    stopRain();
+
+    showQuestion("No 😭 Goodbye");
+
+
+    showOptions(`
+
+        <button class="back"
+                id="backDont">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("backDont")
+        .addEventListener("click", function() {
+
+            questionTwo();
+
+        });
+
+}
+
+
+
+/* =================================
+   QUESTION THREE
+================================= */
+
+function questionThree() {
+
+    stopRain();
+
+    showQuestion(
+        "I FELL IN LOVE WITH YOU. " +
+        "IS THIS SAME FOR YOU TOO.? ❤️"
+    );
+
+
+    showOptions(`
+
+        <button id="yesLove">
+            YES ❤️
+        </button>
+
+        <button id="noLove">
+            NO 😭
+        </button>
+
+        <br>
+
+        <button class="back"
+                id="backThree">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("yesLove")
+        .addEventListener("click", function() {
+
+            yesAnswer();
+
+        });
+
+
+    document.getElementById("noLove")
+        .addEventListener("click", function() {
+
+            noAnswer();
+
+        });
+
+
+    document.getElementById("backThree")
+        .addEventListener("click", function() {
+
+            questionTwo();
+
+        });
+
+}
+
+
+
+/* =================================
+   YES ANSWER
+================================= */
+
+function yesAnswer() {
+
+    stopRain();
+
+    showQuestion(`
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        Awww... 🥹❤️
+
+    `);
+
+
+    showOptions(`
+
+        <div class="message">
+
+            I knew there was something
+            special about you. 🥰❤️
+
+            <br><br>
+
+            You just made this little
+            heart very happy. 💗✨
+
+            <br><br>
+
+            <span class="sparkle">✨</span>
+            <span class="sparkle">💖</span>
+            <span class="sparkle">🥰</span>
+            <span class="sparkle">💖</span>
+            <span class="sparkle">✨</span>
+
+        </div>
+
+        <br>
+
+        <button id="nextLove">
+
+            Next → 💕
+
+        </button>
+
+    `);
+
+
+    document.getElementById("nextLove")
+        .addEventListener("click", function() {
+
+            finalQuestion();
+
+        });
+
+
+    startLoveRain();
+
+}
+
+
+
+/* =================================
+   NO ANSWER
+================================= */
+
+function noAnswer() {
+
+    stopRain();
+
+    showQuestion("Oh... 😭");
+
+
+    showOptions(`
+
+        <button class="back"
+                id="backNo">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("backNo")
+        .addEventListener("click", function() {
+
+            questionThree();
+
+        });
+
+}
+
+
+
+/* =================================
+   FINAL QUESTION
+================================= */
+
+function finalQuestion() {
+
+    stopRain();
+
+    hateClicks = 0;
+
+
+    showQuestion(
+        "What will you say to me? 👀💗"
+    );
+
+
+    showOptions(`
+
+        <button id="loveButton">
+
+            I love you ❤️
+
+        </button>
+
+
+        <button id="hateButton">
+
+            I hate you 😭
+
+        </button>
+
+    `);
+
+
+    document.getElementById("loveButton")
+        .addEventListener("click", function() {
+
+            loveAnswer();
+
+        });
+
+
+    document.getElementById("hateButton")
+        .addEventListener("click", function() {
+
+            hateAnswer();
+
+        });
+
+
+    /* Put hate button somewhere visible first */
+
+    setTimeout(function() {
+
+        moveHateButton();
+
+    }, 50);
+
+}
+
+
+
+/* =================================
+   LOVE ANSWER
+================================= */
+
+function loveAnswer() {
+
+    stopRain();
+
+
+    showQuestion(`
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        Awww... I love you toooo! 🥰❤️
+
+    `);
+
+
+    showOptions(`
+
+        <div class="message">
+
+            You just made this moment
+            extra special. 🥹💕
+
+            <br><br>
+
+            Sending you a whole sky
+            full of love and happiness. ✨❤️
+
+            <br><br>
+
+            💗 ✨ 🥰 ✨ 💗
+
+        </div>
+
+        <br>
+
+        <button id="agreementButton">
+
+            One more thing... 👀💕
+
+        </button>
+
+        <br>
+
+        <button class="back"
+                id="backLove">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("agreementButton")
+        .addEventListener("click", function() {
+
+            agreementQuestion();
+
+        });
+
+
+    document.getElementById("backLove")
+        .addEventListener("click", function() {
+
+            finalQuestion();
+
+        });
+
+
+    startLoveRain();
+
+}
+
+
+
+/* =================================
+   AGREEMENT
+================================= */
+
+function agreementQuestion() {
+
+    stopRain();
+
+
+    showQuestion(`
+
+        <div class="agreement">
+
+            <div class="agreement-title">
+
+                💕 A Little Agreement 💕
+
+            </div>
+
+
+            <div class="agreement-text">
+
+                Here is a little agreement
+                for staying together for a lifetime. 🥰❤️
+
+                <br><br>
+
+                Would you also choose to stay
+                by my side through all the happy
+                moments, silly moments, and
+                beautiful memories? 🌸✨
+
+                <br><br>
+
+                <b>
+                    Would you say YES? 👀❤️
+                </b>
+
+            </div>
+
+        </div>
+
+    `);
+
+
+    showOptions(`
+
+        <button class="yes"
+                id="agreementYes">
+
+            YES ❤️
+
+        </button>
+
+
+        <button class="yes"
+                id="agreementOfCourse">
+
+            YES, OF COURSE 🥰
+
+        </button>
+
+
+        <br>
+
+
+        <button class="back"
+                id="backAgreement">
+
+            ← Back
+
+        </button>
+
+    `);
+document.getElementById("agreementYes")
+        .addEventListener("click", function() {
+
+            congratulations();
+
+        });
+
+
+    document.getElementById("agreementOfCourse")
+        .addEventListener("click", function() {
+
+            congratulations();
+
+        });
+
+
+    document.getElementById("backAgreement")
+        .addEventListener("click", function() {
+
+            loveAnswer();
+
+        });
+
+}
+
+
+
+/* =================================
+   CONGRATULATIONS
+================================= */
+
+function congratulations() {
+
+    stopRain();
+
+
+    showQuestion(`
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <div class="congrats">
+
+            Congratulations! 🎉💕
+
+        </div>
+
+    `);
+
+
+    showOptions(`
+
+        <div class="message">
+
+            You are now officially part
+            of this cute little love story. 🥰❤️
+
+            <br><br>
+
+            May there always be smiles,
+            laughter, happiness and
+            beautiful memories. 🌸✨
+
+            <br><br>
+
+            ❤️ 💖 💕 🥰 ✨ 🌸
+
+        </div>
+
+        <br>
+
+        <button class="back"
+                id="backCongrats">
+
+            ← Back
+
+        </button>
+
+    `);
+
+
+    document.getElementById("backCongrats")
+        .addEventListener("click", function() {
+
+            agreementQuestion();
+
+        });
+
+
+    startCelebrationRain();
+
+}
+
+
+
+/* =================================
+   HATE ANSWER
+================================= */
+
+function hateAnswer() {
+
+    hateClicks++;
+
+
+    if (hateClicks >= 6) {
+
+        stopRain();
+
+
+        showQuestion(
+            "Okay fine... you don't love me ☹️😞"
+        );
+
+
+        showOptions(`
+
+            <div class="message">
+
+                I'll accept it... 😭💔
+
+                <br><br>
+
+                <span class="sparkle">🥺</span>
+                <span class="sparkle">💔</span>
+                <span class="sparkle">😭</span>
+                <span class="sparkle">💔</span>
+                <span class="sparkle">🥺</span>
+
+            </div>
+
+            <br>
+
+            <button class="back"
+                    id="backHate">
+
+                ← Back
+
+            </button>
+
+        `);
+
+
+        document.getElementById("backHate")
+            .addEventListener("click", function() {
+
+                finalQuestion();
+
+            });
+
+
+        startCryRain();
+
+        return;
+
+    }
+
+
+    showQuestion(
+        "Are you really sure...? 🥺"
+    );
+
+
+    var button =
+        document.getElementById("hateButton");
+
+
+    if (button) {
+
+        /* Crack */
+
+        button.classList.remove("cracked");
+
+        void button.offsetWidth;
+
+        button.classList.add("cracked");
+
+
+        /* Little crack mark */
+
+        var crack =
+            document.createElement("span");
+
+        crack.className = "crack";
+
+        crack.innerHTML = "╱╲";
+
+        crack.style.left =
+            Math.random() * 70 + "%";
+
+        crack.style.top =
+            Math.random() * 60 + "%";
+
+
+        button.appendChild(crack);
+
+
+        setTimeout(function() {
+
+            crack.remove();
+
+        }, 900);
+
+
+        /* Move */
+
+        moveHateButton();
+
+    }
+
+}
+
+
+
+/* =================================
+   MOVE HATE BUTTON
+================================= */
+
+function moveHateButton() {
+
+    var button =
+        document.getElementById("hateButton");
+
+
+    if (!button) {
+        return;
+    }
+
+
+    var padding = 20;
+
+
+    var maxX =
+        window.innerWidth -
+        button.offsetWidth -
+        padding;
+
+
+    var maxY =
+        window.innerHeight -
+        button.offsetHeight -
+        padding;
+
+
+    var x =
+        padding +
+        Math.random() *
+        Math.max(0, maxX - padding);
+
+
+    var y =
+        padding +
+        Math.random() *
+        Math.max(0, maxY - padding);
+
+
+    button.style.left =
+        x + "px";
+
+
+    button.style.top =
+        y + "px";
+
+}
+/* =================================
+   CREATE FALLING EMOJI
+================================= */
+
+function createRain(emojis) {
+
+    var emoji =
+        document.createElement("div");
+
+
+    var random =
+        Math.floor(
+            Math.random() *
+            emojis.length
+        );
+
+
+    emoji.innerHTML =
+        emojis[random];
+
+
+    emoji.className =
+        "falling";
+
+
+    emoji.style.left =
+        Math.random() * 100 + "vw";
+
+
+    emoji.style.fontSize =
+        (20 + Math.random() * 30) + "px";
+
+
+    emoji.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+
+    document.body.appendChild(emoji);
+
+
+    setTimeout(function() {
+
+        emoji.remove();
+
+    }, 5500);
+
+}
+
+
+
+/* =================================
+   LOVE RAIN
+================================= */
+
+function startLoveRain() {
+
+    stopRain();
+
+
+    var emojis = [
+
+        "❤️",
+        "💖",
+        "💗",
+        "💕",
+        "💓",
+        "🥰",
+        "✨",
+        "🌸"
+
+    ];
+
+
+    rainTimer =
+        setInterval(function() {
+
+            createRain(emojis);
+
+        }, 120);
+
+
+    setTimeout(function() {
+
+        stopRain();
+
+    }, 7000);
+
+}
+
+
+
+/* =================================
+   CELEBRATION RAIN
+================================= */
+
+function startCelebrationRain() {
+
+    stopRain();
+
+
+    var emojis = [
+
+        "❤️",
+        "💖",
+        "💗",
+        "💕",
+        "💓",
+        "💞",
+        "🥰",
+        "😍",
+        "✨",
+        "🌸",
+        "🎉",
+        "💐"
+
+    ];
+
+
+    rainTimer =
+        setInterval(function() {
+
+            createRain(emojis);
+
+        }, 90);
+
+
+    setTimeout(function() {
+
+        stopRain();
+
+    }, 10000);
+
+}
+
+
+
+/* =================================
+   CRYING RAIN
+================================= */
+
+function startCryRain() {
+
+    stopRain();
+
+
+    var emojis = [
+
+        "😭",
+        "😢",
+        "🥺",
+        "💔",
+        "😿"
+
+    ];
+
+
+    rainTimer =
+        setInterval(function() {
+
+            createRain(emojis);
+
+        }, 120);
+
+
+    setTimeout(function() {
+
+        stopRain();
+
+    }, 9000);
+
+}
+
+
+
+/* =================================
+   SCREEN RESIZE
+================================= */
+
+window.addEventListener("resize", function() {
+
+    moveHateButton();
+
+});
+
+</script>
+
+</body>
+</html>
